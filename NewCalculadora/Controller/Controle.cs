@@ -3,33 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using NewCalculadora.Controller;
+
 
 namespace NewCalculadora.Controller
 {
-    class Controle
-    {
+    public class Controle
+    {       
+       
+        public  String Mensagem { get; set; }
         Calcular calcular = new Calcular();
-        public String Mensagem { get; set; }
 
-        public double Somar(double n1, double n2)
+        public double Soma(double n1, double n2)
         {
-            return calcular.Somar(n1, n2);
+            return Calcular.Somar(n1,n2);
         }
-        public double Dividir(double n1, double n2)
+        public double Div(double n1, double n2)
         {
-            return calcular.Dividir(n1, n2);
+            return Calcular.Dividir(n1, n2);
         }
-        public double Subtrair(double n1, double n2)
+        public double Sub(double n1, double n2)
         {
-            return calcular.Subtrair(n1, n2);
+            return Calcular.Subtrair(n1, n2);
         }
-        public double Multiplicar(double n1, double n2)
+        public double Mult(double n1, double n2)
         {
-            return calcular.Multiplicar(n1, n2);
+            return Calcular.Multiplicar(n1, n2);
         }
         public double ConverterSinal(double valor)
         {
-            return calcular.ConverterSinal(valor);
+            return ConverterSinal(valor);
         }
-    }
+    } 
 }

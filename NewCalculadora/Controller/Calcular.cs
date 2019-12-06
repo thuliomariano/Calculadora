@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace NewCalculadora.Controller
 {
-    class Calcular
+    public class Calcular
     {
         public double Number { get; set; }
         public double Number2 { get; set; }
@@ -21,19 +21,19 @@ namespace NewCalculadora.Controller
             Number2 = number2;
         }
 
-        public double Somar(double n1, double n2)
+        public static double Somar(double n1, double n2)
         {
             return n1 + n2;
         }
-        public double Subtrair(double n1, double n2)
+        public static double Subtrair(double n1, double n2)
         {
             return n1 - n2;
         }
-        public double Multiplicar(double n1, double n2)
+        public static double Multiplicar(double n1, double n2)
         {
             return n1 * n2;
         }
-        public double Dividir(double n1, double n2)
+        public static double Dividir(double n1, double n2)
         {
             double resultado;
             try
@@ -46,9 +46,17 @@ namespace NewCalculadora.Controller
             }
             return resultado;
         }
-        public double ConverterSinal(double valor)
+        public static double ConverterSinal(double valor)
         {
-            return valor = valor - (valor * 2); 
+            try
+            {
+            return valor = valor - (valor * 2);
+
+            }
+            catch (StackOverflowException)
+            {
+                return valor;
+            }
         }
     }
 }

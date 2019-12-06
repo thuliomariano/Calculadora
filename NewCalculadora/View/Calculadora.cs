@@ -17,6 +17,7 @@ namespace NewCalculadora
         bool igual;
         Controle controle = new Controle();
 
+
         private void btnPlus_Click(object sender, EventArgs e)
         {
             try
@@ -27,11 +28,11 @@ namespace NewCalculadora
             }
             catch (FormatException erroFormatException)
             {
-                MessageBox.Show("Erro de formatação: " + erroFormatException.Message);
+                MessageBox.Show("Erro de formatação: " + erroFormatException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception erroInesperado)
             {
-                MessageBox.Show("Erro inesperado: " + erroInesperado.Message);
+                MessageBox.Show("Erro inesperado: " + erroInesperado.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -193,17 +194,18 @@ namespace NewCalculadora
         {
             try
             {
+
                 String[] vetor = txtTela.Text.Split(' ');
                 valor2 = Convert.ToDouble(vetor[2]);
                 switch (opcao)
                 {
                     case 1:
                         txtTela.Clear();
-                        txtTela.Text = controle.Somar(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
+                        txtTela.Text = controle.Soma(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
                         break;
                     case 2:
                         txtTela.Clear();
-                        txtTela.Text = controle.Subtrair(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
+                        txtTela.Text = controle.Sub(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
                         break;
                     case 3:
                         if (valor2 == 0)
@@ -213,13 +215,13 @@ namespace NewCalculadora
                         else
                         {
                             txtTela.Clear();
-                            txtTela.Text = controle.Dividir(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
+                            txtTela.Text = controle.Div(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
                         }
 
                         break;
                     case 4:
                         txtTela.Clear();
-                        txtTela.Text = controle.Multiplicar(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
+                        txtTela.Text = controle.Mult(valor, valor2).ToString("F2", CultureInfo.InvariantCulture);
                         break;
                     default:
                         break;
@@ -230,7 +232,7 @@ namespace NewCalculadora
             }
             catch (Exception error)
             {
-                MessageBox.Show("Erro inesperado: " + error.Message);
+                MessageBox.Show("Erro inesperado: " + error.Message, "Error",MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
         }
@@ -259,11 +261,11 @@ namespace NewCalculadora
             }
             catch (FormatException erroFormatException)
             {
-                MessageBox.Show("Erro de formatação: " + erroFormatException.Message);
+                MessageBox.Show("Erro de formatação: " + erroFormatException.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception erroInesperado)
             {
-                MessageBox.Show("Erro inesperado: " + erroInesperado.Message);
+                MessageBox.Show("Erro inesperado: " + erroInesperado.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -277,11 +279,11 @@ namespace NewCalculadora
             }
             catch (FormatException erroFormatacao)
             {
-                MessageBox.Show("Erro de formatação: " + erroFormatacao.Message);
+                MessageBox.Show("Erro de formatação: " + erroFormatacao.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Erro inesperado: " + exception.Message);
+                MessageBox.Show("Erro inesperado: " + exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -295,26 +297,50 @@ namespace NewCalculadora
             }
             catch (FormatException formatacao)
             {
-                MessageBox.Show("Erro de formatação: " + formatacao.Message);
+                MessageBox.Show("Erro de formatação: " + formatacao.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
             catch (Exception exception)
             {
-                MessageBox.Show("Erro inesperado: " + exception.Message);
+                MessageBox.Show("Erro inesperado: " + exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void button16_Click(object sender, EventArgs e)
         {
+            try
+            {
             double numero = Convert.ToDouble(txtTela.Text);
             txtTela.Text = "";
             txtTela.Text = controle.ConverterSinal(numero).ToString("F2", CultureInfo.InvariantCulture);
+
+            }
+            catch (FormatException errorFormat)
+            {
+                MessageBox.Show("Error de formataçaõ: " + errorFormat.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erro inesperado: " + exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void button19_Click(object sender, EventArgs e)
         {
+            try
+            {
             int cortar = txtTela.Text.IndexOf(txtTela.Text);
             String recortarUltimoCaracter = txtTela.Text.Remove(txtTela.Text.Length - 1);
             txtTela.Text = recortarUltimoCaracter;
+
+            }
+            catch (FormatException errorFormat)
+            {
+                MessageBox.Show("Error de formataçaõ: " + errorFormat.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception exception)
+            {
+                MessageBox.Show("Erro inesperado: " + exception.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
     }
 }
